@@ -15,52 +15,39 @@ def toAngle(metros, L=0.5):
 
 def singleSlit():
 
-    simple = pd.read_excel("doblerendija.xlsx")
+    simple = pd.read_excel(root+"\doblerendija.xlsx")
     micrometros = np.around(simple["micrometros1"].to_numpy(),5)[:39]
     metros = micrometros/1000000
-    voltaje = np.around(simple["voltaje"].to_numpy(),5)[:39]
+    voltajes = np.around(simple["voltaje"].to_numpy(),5)[:39]
+    angulos = toAngle(metros)
 
-    voltaje *= 0.3
-    metros*=2
-    
-
-
-    #for l in np.linspace(0.28, 0.4, 3):
-        #print(l)
-        #angles = toAngle(metros, l)
-        #print(angles)
 
     plt.figure()
-    plt.scatter(metros, voltaje, color="k")
+    plt.scatter(angulos, voltajes, color="k",s=10)
 
 
-    #metros = toAngle(metros, 0.3)
-
-    print(metros)
-
-
-    angx = np.linspace(-0.008, 0.008, 100)
+    angx = np.linspace(-0.008, 0.008, 300)
 
     def f2 (theta, A, B):
-        return A*(np.sin(B*np.sin(theta)))**2 / (B*np.sin(theta))**2
+         return A*(np.sin(B*np.sin(theta)))**2 / (B*np.sin(theta))**2
 
-    # B = pi*a/lambda
-    plt.plot(angx, f2(angx, 0.25, 390))
+    # # B = pi*a/lambda
+    plt.plot(angx, f2(angx, 0.778, 370), c="purple")
 
-    ajuste, cov = curve_fit(f2, metros, voltaje , p0=[0.25, 300])
-    print(ajuste) #A, B (importa B)
-    print("")
-    print(np.sqrt(np.diag(cov))) #Incertidumbres A y B
+    # ajuste, cov = curve_fit(f2, metros, voltaje , p0=[0.25, 300])
+    # print(ajuste) #A, B (importa B)
+    # print("")
+    # print(np.sqrt(np.diag(cov))) #Incertidumbres A y B
 
 
-    plt.plot(angx, f2(angx, ajuste[0], ajuste[1]))
+    # plt.plot(angx, f2(angx, ajuste[0], ajuste[1]))
     plt.xlabel("Ángulo (rad)")
     plt.ylabel("Voltaje (V)")
-    
+    plt.savefig(r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija\single.png")
 
 def doubleSlit():
 
-    dataFile = pd.read_excel(r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija\doblerendija.xlsx")
+    dataFile = pd.read_excel(root+"\doblerendija.xlsx")
     micrometros = dataFile["microsDobleCentered"].to_numpy()[:-3]
     metros = micrometros/1000000
     voltajes = dataFile["voltajeDoble"].to_numpy()[:-3]  
@@ -96,7 +83,7 @@ def doubleSlit():
     
     
     plt.figure()
-    plt.scatter(angulos,voltajes, color='k') 
+    plt.scatter(angulos,voltajes, color='k', s=10) 
     # plt.errorbar(angulo, voltaje, xerr=0.00001, yerr = 0.005, fmt=" ")
 
     #thetax = np.linspace(-0.005,0.005,100)
@@ -105,12 +92,13 @@ def doubleSlit():
     def f1 (theta,A,B,C):
         return A*(np.cos(B*np.sin(theta)))**2 * ((np.sin(C*np.sin(theta)))/(C*np.sin(theta)))**2
 
-    popt,pcov = curve_fit(f1,angulos, voltajes, p0=[2.6,2150,360])
+    popt,pcov = curve_fit(f1,angulos, voltajes, p0=[2.6,2150,450])
     #bounds=([2.3,2000,500],[2.8,3000,600])
     yajuste = f1(thetax, popt[0], popt[1], popt[2])
-    plt.plot(thetax,yajuste)
+    plt.plot(thetax,yajuste, c='purple')
     plt.xlabel("Ángulo (rad)")
     plt.ylabel("Voltaje (V)")
+    plt.savefig(r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija\double.png")
     #print(popt) #A, B y C (importan B y C)
     #print(np.sqrt(np.diag(pcov))) #Incertidumbres A, B y C
 
@@ -118,9 +106,10 @@ def doubleSlit():
 
 
 def main():
-    #singleSlit()
-    doubleSlit()
+    singleSlit()
+    # doubleSlit()
     plt.show()
 
 if __name__ == "__main__":
+    root = r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija"
     main()
