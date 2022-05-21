@@ -5,10 +5,15 @@ Created on Tue Apr 12 13:19:34 2022
 
 @author: camilo
 """
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+
+
+
+
 
 #Actividad 1
 
@@ -28,6 +33,12 @@ plt.errorbar(xval1, ylin1, yerr = 0.005, fmt=" ")
 plt.xlabel("Número de rendijas")
 plt.xticks([0,1,2])
 plt.ylabel("Voltaje (V)")
+
+
+
+
+
+
 
 #actividad 2
 #doble rendija
@@ -55,6 +66,12 @@ print("")
 print(np.sqrt(np.diag(pcov))) #Incertidumbres A, B y C
 print("")
 print("")
+
+
+
+
+
+
 
 #una rendija
 
