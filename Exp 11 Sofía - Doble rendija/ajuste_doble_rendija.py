@@ -106,9 +106,10 @@ def doubleSlit():
 
 
 def main():
-    singleSlit()
-    # doubleSlit()
-    plt.show()
+    #singleSlit()
+    #doubleSlit()
+    #plt.show()
+    None
 
 if __name__ == "__main__":
     root = r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija"
