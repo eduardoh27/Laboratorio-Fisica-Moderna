@@ -98,7 +98,7 @@ def doubleSlit():
     plt.plot(thetax,yajuste, c='purple')
     plt.xlabel("Ángulo (rad)")
     plt.ylabel("Voltaje (V)")
-    plt.savefig(r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija\double.png")
+    #plt.savefig(r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija\double.png")
     #print(popt) #A, B y C (importan B y C)
     #print(np.sqrt(np.diag(pcov))) #Incertidumbres A, B y C
 
@@ -107,10 +107,10 @@ def doubleSlit():
 
 def main():
     #singleSlit()
-    #doubleSlit()
-    #plt.show()
+    doubleSlit()
+    plt.show()
     None
 
 if __name__ == "__main__":
-    root = r"C:\Users\Eduardo\Downloads\Labs\LaboratorioDeFisicaModerna202220\ExpSofía - Doble rendija"
+    root = r"C:\Users\SNB\Desktop\LaboratorioDeFisicaModerna202220\Exp 11 Sofía - Doble rendija"
     main()

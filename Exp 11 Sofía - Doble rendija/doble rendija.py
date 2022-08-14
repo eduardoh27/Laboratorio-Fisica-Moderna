@@ -95,5 +95,7 @@ plt.plot(angx, f2(angx, ajuste[0], ajuste[1]))
 plt.xlabel("Ángulo (rad)")
 plt.ylabel("Voltaje (V)")
 
+print("Edu y Sofi siempre juntos")
+
 
 

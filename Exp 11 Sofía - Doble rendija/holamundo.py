@@ -5,7 +5,7 @@ from scipy.optimize import curve_fit
 
 def main():
 
-    dataFile = pd.read_excel(r"C:\Users\SNB\Desktop\LaboratorioDeFisicaModerna202220\Exp 11 Sofía - Doble rendija\doblerendija.xlsx")
+    dataFile = pd.read_excel("doblerendija.xlsx")
     micrometros = dataFile["micrometros"].to_numpy()
     metros = micrometros/1000000
     voltajes = dataFile["voltajes"].to_numpy() 
