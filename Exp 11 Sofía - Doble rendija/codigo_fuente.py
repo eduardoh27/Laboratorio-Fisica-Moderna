@@ -11,7 +11,7 @@ def main():
     voltajes = dataFile["voltajes"].to_numpy() 
     
     L = 0.5
-    angulos = np.arctan(metros/L) 
+    angulos = np.arctan(metros/L)  
 
     plt.figure()
     plt.scatter(angulos,voltajes) 
